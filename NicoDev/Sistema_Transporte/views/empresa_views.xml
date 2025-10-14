@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_empresa_tree" model="ir.ui.view">
+        <field name="name">gestion.empresa.tree</field>
+        <field name="model">gestion.empresa</field>
+        <field name="arch" type="xml">
+            <list string="Empresas">
+                <field name="name"/>
+                <field name="rubro"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_empresa_form" model="ir.ui.view">
+        <field name="name">gestion.empresa.form</field>
+        <field name="model">gestion.empresa</field>
+        <field name="arch" type="xml">
+            <form string="Empresa">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="rubro"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_empresa" model="ir.actions.act_window">
+        <field name="name">Empresas</field>
+        <field name="res_model">gestion.empresa</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_empresa_root" name="Empresas" parent="base.menu_custom" sequence="3"/>
+    <menuitem id="menu_empresa" name="Gestionar Empresas" parent="menu_empresa_root" action="action_empresa"/>
+</odoo>

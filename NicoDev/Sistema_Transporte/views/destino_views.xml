@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_destino_tree" model="ir.ui.view">
+        <field name="name">gestion.destino.tree</field>
+        <field name="model">gestion.destino</field>
+        <field name="arch" type="xml">
+            <list string="Destinos">
+                <field name="name"/>
+                <field name="descripcion"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_destino_form" model="ir.ui.view">
+        <field name="name">gestion.destino.form</field>
+        <field name="model">gestion.destino</field>
+        <field name="arch" type="xml">
+            <form string="Destino">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_destino" model="ir.actions.act_window">
+        <field name="name">Destinos</field>
+        <field name="res_model">gestion.destino</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_destino_root" name="Destinos" parent="base.menu_custom" sequence="2"/>
+    <menuitem id="menu_destino" name="Gestionar Destinos" parent="menu_destino_root" action="action_destino"/>
+</odoo>

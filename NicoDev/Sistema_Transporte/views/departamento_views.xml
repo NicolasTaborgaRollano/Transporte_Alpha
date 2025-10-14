@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_departamento_tree" model="ir.ui.view">
+        <field name="name">gestion.departamento.tree</field>
+        <field name="model">gestion.departamento</field>
+        <field name="arch" type="xml">
+            <list string="Departamentos">
+                <field name="name"/>
+                <field name="descripcion"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_departamento_form" model="ir.ui.view">
+        <field name="name">gestion.departamento.form</field>
+        <field name="model">gestion.departamento</field>
+        <field name="arch" type="xml">
+            <form string="Departamento">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_departamento" model="ir.actions.act_window">
+        <field name="name">Departamentos</field>
+        <field name="res_model">gestion.departamento</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_departamento_root" name="Departamentos" parent="base.menu_custom" sequence="1"/>
+    <menuitem id="menu_departamento" name="Gestionar Departamentos" parent="menu_departamento_root" action="action_departamento"/>
+</odoo>

@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_gestion_reporte_tree" model="ir.ui.view">
+        <field name="name">gestion.reporte.tree</field>
+        <field name="model">gestion.reporte</field>
+        <field name="arch" type="xml">
+            <list string="Reportes">
+                <field name="name"/>
+                <field name="fecha"/>
+                <field name="tipo_reporte_id"/>
+                <field name="tecnico_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_gestion_reporte_form" model="ir.ui.view">
+        <field name="name">gestion.reporte.form</field>
+        <field name="model">gestion.reporte</field>
+        <field name="arch" type="xml">
+            <form string="Reporte">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="fecha"/>
+                        <field name="tipo_reporte_id"/>
+                        <field name="tecnico_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gestion_reporte" model="ir.actions.act_window">
+        <field name="name">Reportes</field>
+        <field name="res_model">gestion.reporte</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_gestion_reporte_root" name="Reportes" parent="base.menu_custom" sequence="5"/>
+    <menuitem id="menu_gestion_reporte" name="Gestionar Reportes" parent="menu_gestion_reporte_root" action="action_gestion_reporte"/>
+</odoo>
