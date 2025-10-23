@@ -1,65 +1,92 @@
 <odoo>
-    <!-- Vista de lista (list) -->
     <record id="view_gestion_registro_list" model="ir.ui.view">
         <field name="name">gestion.registro.list</field>
         <field name="model">gestion.registro</field>
         <field name="arch" type="xml">
-            <list string="Registros">
-                <field name="name"/> <!-- Nombre completo -->
+            <list string="Registros de Transporte">
                 <field name="persona_que_llamo"/>
-                <field name="destino_id"/>
-                <field name="tecnico_id"/>
-                <field name="departamento_id"/>
-                <field name="numero_informe"/>
+                <field name="nombre"/>
+                <field name="apellido_paterno"/>
                 <field name="fecha"/>
                 <field name="hora"/>
-                <field name="cantidad_bs"/>
+                <field name="destino_id"/>
+                <field name="tecnico_id"/>
                 <field name="empresa_id"/>
-                <field name="tipo_reporte_id"/>
+                <field name="cantidad_bs"/>
+                <field name="facturable"/>
             </list>
         </field>
     </record>
 
-    <!-- Vista de formulario (form) -->
     <record id="view_gestion_registro_form" model="ir.ui.view">
         <field name="name">gestion.registro.form</field>
         <field name="model">gestion.registro</field>
         <field name="arch" type="xml">
-            <form string="Registro">
+            <form string="Registro de Transporte">
                 <sheet>
                     <group>
-                        <field name="nombre"/>
-                        <field name="apellido_paterno"/>
-                        <field name="password"/>
-                        <field name="persona_que_llamo"/>
+                        <group string="Datos del Solicitante">
+                            <field name="persona_que_llamo"/>
+                            <field name="nombre"/>
+                            <field name="apellido_paterno"/>
+                            <field name="password" password="True"/>
+                        </group>
+                        <group string="Fecha y Hora">
+                            <field name="fecha"/>
+                            <field name="hora"/>
+                        </group>
                     </group>
+
                     <group>
-                        <field name="destino_id"/>
-                        <field name="tecnico_id"/>
-                        <field name="departamento_id"/>
-                        <field name="empresa_id"/>
-                        <field name="tipo_reporte_id"/>
+                        <group string="Detalles de Transporte">
+                            <field name="destino_id"/>
+                            <field name="tecnico_id"/>
+                            <field name="departamento_id"/>
+                        </group>
+                        <group string="Datos de Empresa / Reporte">
+                            <field name="empresa_id"/>
+                            <field name="tipo_reporte_id"/>
+                            <field name="numero_informe"/>
+                            <field name="cantidad_bs"/>
+                            <field name="facturable"/>
+                        </group>
                     </group>
-                    <group>
-                        <field name="numero_informe"/>
-                        <field name="fecha"/>
-                        <field name="hora"/>
-                        <field name="cantidad_bs"/>
-                        <field name="currency_id"/>
+
+                    <group string="Observaciones">
+                        <field name="observaciones"/>
                     </group>
+
+                    <notebook>
+                        <page string="Planilla de uso de Transporte">
+                            <field name="lineas_transporte">
+                                <list editable="bottom">
+                                    <field name="tecnico_id"/>
+                                    <field name="destino_id"/>
+                                    <field name="vuelta"/>
+                                    <field name="bs"/>
+                                    <field name="firma"/>
+                                    <field name="salida"/>
+                                    <field name="cliente"/>
+                                    <field name="informe"/>
+                                    <field name="detalle"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Acción para abrir registros -->
     <record id="action_gestion_registro" model="ir.actions.act_window">
-        <field name="name">Registros</field>
+        <field name="name">Registro de Transporte</field>
         <field name="res_model">gestion.registro</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Menú -->
-    <menuitem id="menu_gestion_registro_root" name="Registros" parent="base.menu_custom" sequence="4"/>
-    <menuitem id="menu_gestion_registro" name="Gestionar Registros" parent="menu_gestion_registro_root" action="action_gestion_registro"/>
+    <menuitem id="menu_gestion_registro_root"
+              name="Registros de Transporte"
+              parent="menu_operaciones"
+              sequence="1"
+              action="action_gestion_registro"/>
 </odoo>

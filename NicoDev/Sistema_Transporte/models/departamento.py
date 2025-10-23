@@ -1,8 +1,7 @@
 from odoo import models, fields
 
 class Departamento(models.Model):
-    _name = 'gestion.departamento'
-    _description = 'Departamento'
+    _inherit = 'hr.department'  # Podemos usar los departamentos existentes
+    _description = 'Departamento extendido'
 
-    name = fields.Char(string='Nombre', required=True)
-    descripcion = fields.Text(string='Descripción')
+    descripcion = fields.Text(string='Descripción adicional')

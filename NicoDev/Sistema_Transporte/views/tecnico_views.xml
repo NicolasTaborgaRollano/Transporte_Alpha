@@ -1,7 +1,7 @@
 <odoo>
     <record id="view_tecnico_tree" model="ir.ui.view">
         <field name="name">gestion.tecnico.tree</field>
-        <field name="model">gestion.tecnico</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <list string="Técnicos">
                 <field name="name"/>
@@ -12,7 +12,7 @@
 
     <record id="view_tecnico_form" model="ir.ui.view">
         <field name="name">gestion.tecnico.form</field>
-        <field name="model">gestion.tecnico</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <form string="Técnico">
                 <sheet>
@@ -27,10 +27,7 @@
 
     <record id="action_tecnico" model="ir.actions.act_window">
         <field name="name">Técnicos</field>
-        <field name="res_model">gestion.tecnico</field>
+        <field name="res_model">hr.employee</field>
         <field name="view_mode">list,form</field>
     </record>
-
-    <menuitem id="menu_tecnico_root" name="Técnicos" parent="base.menu_custom" sequence="6"/>
-    <menuitem id="menu_tecnico" name="Gestionar Técnicos" parent="menu_tecnico_root" action="action_tecnico"/>
 </odoo>

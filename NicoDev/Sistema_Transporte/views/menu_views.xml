@@ -1,19 +1,14 @@
 <odoo>
-    <!-- Menú principal -->
     <menuitem id="menu_gestion_root" name="Gestión de Transporte" sequence="1"/>
 
-    <!-- Submenús -->
     <menuitem id="menu_configuracion" name="Configuración" parent="menu_gestion_root" sequence="1"/>
     <menuitem id="menu_operaciones" name="Operaciones" parent="menu_gestion_root" sequence="2"/>
 
-    <!-- Entradas de configuración -->
+    <!-- Configuración -->
     <menuitem id="menu_destino" name="Destinos" parent="menu_configuracion" action="action_destino" sequence="1"/>
     <menuitem id="menu_tecnico" name="Técnicos" parent="menu_configuracion" action="action_tecnico" sequence="2"/>
     <menuitem id="menu_departamento" name="Departamentos" parent="menu_configuracion" action="action_departamento" sequence="3"/>
-    <menuitem id="menu_empresa" name="Empresas" parent="menu_configuracion" action="action_empresa" sequence="4"/>
-    <menuitem id="menu_tipo_reporte" name="Tipos de Reporte" parent="menu_configuracion" action="action_tipo_reporte" sequence="5"/>
 
-    <!-- Entradas operativas -->
+    <!-- Operaciones -->
     <menuitem id="menu_gestion_registro" name="Gestión de Registros" parent="menu_operaciones" action="action_gestion_registro" sequence="1"/>
-    <menuitem id="menu_gestion_reporte" name="Gestión de Reportes" parent="menu_operaciones" action="action_gestion_reporte" sequence="2"/>
 </odoo>
