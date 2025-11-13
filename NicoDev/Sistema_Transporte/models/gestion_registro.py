@@ -6,46 +6,39 @@ class GestionRegistro(models.Model):
     _name = 'gestion.registro'
     _description = 'Gestión de Registro de Transporte'
 
-    # Campo requerido por Odoo para mostrar el registro
+    # Nombre del registro para mostrar en Odoo
     name = fields.Char(string='Nombre del registro', compute='_compute_name', store=True)
 
-    # Datos de la persona
+    # Datos del solicitante
     persona_que_llamo = fields.Char(string='Persona que llamó', required=True)
     nombre = fields.Char(string='Nombre', required=True)
     apellido_paterno = fields.Char(string='Apellido Paterno', required=True)
     password = fields.Char(string='Password', password=True)
 
-    # Datos de referencia
+    # Fecha y hora
     fecha = fields.Date(string='Fecha', default=fields.Date.context_today)
     hora = fields.Char(string='Hora', default=lambda self: datetime.now().strftime('%H:%M:%S'))
 
     # Relaciones
     destino_id = fields.Many2one('gestion.destino', string='Destino', required=True)
-    tecnico_id = fields.Many2one('gestion.tecnico', string='Técnico', required=True)
+    tecnico_id = fields.Many2one('res.partner', string='Técnico', domain="[('is_company','=',False)]")
     departamento_id = fields.Many2one('hr.department', string='Departamento')
     empresa_id = fields.Many2one('res.partner', string='Empresa Cliente', domain="[('is_company','=',True)]")
     tipo_reporte_id = fields.Many2one('gestion.tipo_reporte', string='Tipo de Reporte')
 
-    # Información del informe
+    # Informe y finanzas
     numero_informe = fields.Char(string='N° Informe')
     cantidad_bs = fields.Float(string='Monto (Bs)', default=0.0)
     facturable = fields.Boolean(string='Facturable', default=False)
     observaciones = fields.Text(string='Observaciones')
 
-    # Planilla de transporte
+    # Líneas de transporte
     lineas_transporte = fields.One2many('gestion.registro.linea', 'registro_id', string='Planilla de uso de transporte')
 
     @api.depends('nombre', 'apellido_paterno', 'numero_informe')
     def _compute_name(self):
-        """Combina el nombre completo con número de informe para el campo name."""
         for record in self:
             record.name = f"{record.nombre or ''} {record.apellido_paterno or ''} - {record.numero_informe or ''}".strip()
-
-    @api.constrains('cantidad_bs')
-    def _check_cantidad_bs(self):
-        for record in self:
-            if record.cantidad_bs < 0:
-                raise ValidationError("El monto en Bs. no puede ser negativo.")
 
 
 class GestionRegistroLinea(models.Model):

@@ -10,5 +10,17 @@
     <menuitem id="menu_departamento" name="Departamentos" parent="menu_configuracion" action="action_departamento" sequence="3"/>
 
     <!-- Operaciones -->
-    <menuitem id="menu_gestion_registro" name="Gestión de Registros" parent="menu_operaciones" action="action_gestion_registro" sequence="1"/>
+    <!-- Define the action FIRST -->
+    <record id="action_gestion_registro" model="ir.actions.act_window">
+        <field name="name">Registro de Transporte</field>
+        <field name="res_model">gestion.registro</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Then reference it in the menuitem -->
+    <menuitem id="menu_gestion_registro"
+              name="Gestión de Registros"
+              parent="menu_operaciones"
+              action="action_gestion_registro"
+              sequence="1"/>
 </odoo>

@@ -1,4 +1,5 @@
 <odoo>
+    <!-- VISTA LISTA -->
     <record id="view_gestion_registro_list" model="ir.ui.view">
         <field name="name">gestion.registro.list</field>
         <field name="model">gestion.registro</field>
@@ -18,6 +19,7 @@
         </field>
     </record>
 
+    <!-- VISTA FORMULARIO -->
     <record id="view_gestion_registro_form" model="ir.ui.view">
         <field name="name">gestion.registro.form</field>
         <field name="model">gestion.registro</field>
@@ -78,12 +80,14 @@
         </field>
     </record>
 
+    <!-- ACCIÓN -->
     <record id="action_gestion_registro" model="ir.actions.act_window">
         <field name="name">Registro de Transporte</field>
         <field name="res_model">gestion.registro</field>
         <field name="view_mode">list,form</field>
     </record>
 
+    <!-- MENÚ -->
     <menuitem id="menu_gestion_registro_root"
               name="Registros de Transporte"
               parent="menu_operaciones"
